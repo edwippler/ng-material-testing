@@ -1,0 +1,133 @@
+<html>
+<head>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+
+
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js"></script>
+
+  <!-- UI-Router -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+  <script src ="scripts/client.js"></script>
+  <script src ="scripts/controllers/view1.controller.js"></script>
+  <script src ="scripts/controllers/view2.controller.js"></script>
+
+
+
+</head>
+<body ng-app="mdDemoApp">
+  <div>
+    <h1>This is the body</h1>
+
+    <div ng-controller="DemoCtrl as demo" layout="column" ng-cloak class="md-inline-form">
+      <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+        <div>
+          <p>demo.user is: {{demo.user}}</p>
+          <md-input-container>
+            <label>Title</label>
+            <input ng-model="demo.user.title">
+          </md-input-container>
+
+          <md-input-container>
+            <label>Email</label>
+            <input ng-model="demo.user.email" type="email">
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>First name</label>
+            <input ng-model="demo.user.firstName">
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Last Name</label>
+            <input ng-model="demo.user.lastName">
+          </md-input-container>
+
+          <md-switch ng-model="demo.user.married" aria-label="Switch 1">
+            Are you married?
+          </md-switch>
+          <div ng-if="demo.user.married == true">
+
+          </div>
+
+          <md-input-container>
+            <label>Credit Products</label>
+            <md-select ng-model="demo.user.creditProducts" placeholder="Credit Products" class="md-no-underline">
+              <md-option value="credit-card">Credit Card</md-option>
+              <md-option value="heloc">HELOC</md-option>
+              <md-option value="mortgage">Mortgage</md-option>
+              <md-option value="auto-loan">Auto Loan</md-option>
+            </md-select>
+          </md-input-container><br />
+
+          <md-input-container>
+            <label>Salary</label>
+            <input type="number" ng-model="demo.user.salary"/>
+          </md-input-container>
+
+          <p>Miscellaneous message:{{miscMessage}}</p>
+
+          <!-- <p>{{numberVehicles}}</p> -->
+          <!-- <md-input-container> -->
+          <md-radio-group ng-model="demo.user.vehicle">
+            <md-radio-button ng-repeat="c in vehicle.options" ng-value="c">{{c}}</md-radio-button>
+            <!-- <md-radio-button value="has a car" class="md-primary">Car</md-radio-button>
+            <md-radio-button value="no car for you!">No Car</md-radio-button> -->
+
+          </md-radio-group>
+          <!-- </md-input-container> -->
+
+          <div ng-if="demo.user.vehicle === 'Yes'">
+            <p>How many vehicles do you own?</p>
+            <!-- <md-radio-group ng-model="demo.user.numberVehicles">
+            <md-radio-button ng-repeat="c in numberVehicles" ng-value="c">{{c}}</md-radio-button>
+          </md-radio-group> -->
+          <md-select ng-model="demo.user.numberVehicles" placeholder="Number of Vehicles" class="md-no-underline">
+            <md-option value=1>1</md-option>
+            <md-option value=2>2</md-option>
+            <md-option value=3>3+</md-option>
+          </md-select>
+        </div>
+
+        <md-input-container ng-if="demo.user.numberVehicles == 1">
+          <label for="vehicleOne">Vehicle Value</label>
+          <input type="text" name="vehicleOne" ng-model="demo.user.vehileOneValue">
+        </md-input-container>
+
+        <div ng-if="demo.user.numberVehicles == 2">
+          <md-input-container>
+            <label for="vehicleOne">Vehicle 1 Value</label>
+            <input type="text" name="vehicleOne" ng-model="demo.user.vehileOneValue">
+          </md-input-container>
+          <md-input-container>
+            <label for="vehicleTwo">Vehicle 2 Value</label>
+            <input type="text" name="vehicleTwo" ng-model="demo.user.vehileTwoValue">
+          </md-input-container>
+        </div>
+
+          <div ng-if="demo.user.numberVehicles == 3">
+          <md-input-container>
+            <label for="vehicleOne">Vehicle 1 Value</label>
+            <input type="text" name="vehicleOne" ng-model="demo.user.vehileOneValue">
+          </md-input-container>
+          <md-input-container>
+            <label for="vehicleTwo">Vehicle 2 Value</label>
+            <input type="text" name="vehicleTwo" ng-model="demo.user.vehileTwoValue">
+          </md-input-container>
+          <md-input-container>
+            <label for="vehicleComb">Vehicle Combined Value</label>
+            <input type="text" name="vehicleComb" ng-model="demo.user.vehileCombValue">
+          </md-input-container>
+        </div>
+        </div>
+      </md-content>
+    </div>
+  </div>
+</body>
+</html>
